@@ -83,7 +83,7 @@ button{
     position: absolute;
     left: 50%;
     margin: 1%;
-    height: 530px;
+    max-height: 530px;
     overflow: auto;
 }
 table{
@@ -97,6 +97,9 @@ table, tr, th {
     vertical-align: middle;
     font-size: 15px;
 
+}
+iframe {
+    border: none;
 }
 #errorY, #errorR, #errorX, #error {
     font-size: 15px;

@@ -13,6 +13,7 @@ public class ControllerServlet extends HttpServlet {
         String y = request.getParameter("y");
         String r = request.getParameter("r");
         String act = request.getParameter("act");
+        request.getSession().setAttribute("testKey", "testValue");
 
         if (act != null){
             getServletContext().getRequestDispatcher("/clear").forward(request, response);
