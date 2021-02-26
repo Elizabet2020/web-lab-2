@@ -137,8 +137,8 @@
                     let x = r / 100 * xCoordinate;
                     let y = r / 100 * yCoordinate;
                     createNewPoint(x, y, r);
-                    g.fillStyle = 'red';
-                    g.fillRect(150 + x / r * 100 - 2.5, 150 - y / r * 100 - 2.5, 5, 5);
+                    //g.fillStyle = 'red';
+                    //g.fillRect(150 + x / r * 100 - 2.5, 150 - y / r * 100 - 2.5, 5, 5);
                 } else{
                     error.innerHTML = "Для определения координат точки введите R";
                 }
@@ -150,8 +150,14 @@
                     cache: false
                 }).done(function (data) {
                     reloadFrame();
-                    console.log('JSON data: ' + JSON.stringify(data));
-                    console.log('Session ID: ' + '<%= session.getId() %>');
+                    let canvas = document.getElementById("myCanvas");
+                    let g = canvas.getContext("2d");
+                    if (data.toString() ==="false"){
+                        g.fillStyle = 'red';
+                    } else (
+                        g.fillStyle = '#0fff19'
+                    );
+                    g.fillRect(150 + x / r * 100 - 2.5, 150 - y / r * 100 - 2.5, 5, 5);
                 });
             }
             function reloadFrame() {
@@ -170,12 +176,12 @@
         let iframe = document.querySelectorAll("iframe")[0];
         let body = iframe.contentWindow.document.body;
         iframe.width = body.scrollWidth;
-        iframe.height = body.scrollHeight;
+        iframe.height = body.scrollHeight+21;
     }
     function clearFrame() {
         let iframe = document.querySelectorAll("iframe")[0];
         let body = iframe.contentWindow.document.body;
-        iframe.width = body.scrollWidth + 10;
+        iframe.width = body.scrollWidth + 20;
         iframe.height = 150;
     }
 </script>
