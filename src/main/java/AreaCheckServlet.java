@@ -1,7 +1,5 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
 import table.TableRow;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -24,7 +22,6 @@ public class AreaCheckServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         long start = System.nanoTime();
-        ObjectMapper objectMapper = new ObjectMapper();
         HttpSession session = request.getSession(true);
         response.setContentType("text/json;charset=UTF-8");
         PrintWriter writer = response.getWriter();
@@ -74,7 +71,6 @@ public class AreaCheckServlet extends HttpServlet {
                     new TableRow(x, y, r, check, formatDate, timeWorkCode)
             );
             session.setAttribute("data", table);
-            //writer.println(objectMapper.writeValueAsString(table));
             writer.println(check);
             writer.close();
         }
